@@ -27,3 +27,8 @@ vim.opt.listchars = {
 	precedes = '⟨',
 	trail = '☢',
 }
+
+
+-- Buffer navigation
+map("", "<C-N>", ":bnext<CR>")
+map("", "<C-M>", ":bprev<CR>")
