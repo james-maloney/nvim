@@ -9,21 +9,27 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
-	use({
-		'rose-pine/neovim',
-		as = 'rose-pine',
+	use {
+		'numToStr/Comment.nvim',
 		config = function()
-			vim.cmd('colorscheme rose-pine')
+			require('Comment').setup()
 		end
-	})
-	
+	}
 
-	vim.cmd('colorscheme rose-pine')
+	use {
+		'andersevenrud/nordic.nvim',
+	}
 
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use("mbbill/undotree")
 	use("tpope/vim-fugitive")
-	use("mhinz/vim-signify")
+
+	use {
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require('gitsigns').setup()
+		end
+	}
 
 	use({
 		"kylechui/nvim-surround",
