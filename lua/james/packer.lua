@@ -10,6 +10,11 @@ return require('packer').startup(function(use)
 	}
 
 	use {
+		"windwp/nvim-autopairs",
+		config = function() require("nvim-autopairs").setup {} end
+	}
+
+	use {
 		'numToStr/Comment.nvim',
 		config = function()
 			require('Comment').setup()
@@ -19,6 +24,27 @@ return require('packer').startup(function(use)
 	use {
 		'andersevenrud/nordic.nvim',
 	}
+
+	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup {
+				icons = true,
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+				}
+		end
+	})
+
+	use {
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup {}
+		end
+	}
+
+	use("theprimeagen/harpoon")
 
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use("mbbill/undotree")
@@ -70,12 +96,23 @@ return require('packer').startup(function(use)
 	}
 
 	use {
-		'nvim-tree/nvim-tree.lua',
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
 		requires = {
-			'nvim-tree/nvim-web-devicons', -- optional, for file icons
-		},
-		tag = 'nightly' -- optional, updated every week. (see issue #1193)
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		}
 	}
+
+
+	-- use {
+	-- 	'nvim-tree/nvim-tree.lua',
+	-- 	requires = {
+	-- 		'nvim-tree/nvim-web-devicons', -- optional, for file icons
+	-- 	},
+	-- 	tag = 'nightly' -- optional, updated every week. (see issue #1193)
+	-- }
 
 	use {
 		'nvim-lualine/lualine.nvim',

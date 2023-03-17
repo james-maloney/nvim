@@ -8,9 +8,9 @@ vim.opt.expandtab = false;
 vim.opt.autoindent = false;
 vim.opt.smartindent = false;
 vim.opt.indentexpr = "";
--- vim.cmd("set cindent cinkeys-=0#")
 vim.opt.cindent = false;
 vim.opt.nu = true;
+vim.cmd("set nowrap")
 
 vim.cmd("set formatoptions+=r")
 vim.opt.comments = {
@@ -18,5 +18,12 @@ vim.opt.comments = {
 	mb = " *",
 	elx = " */"
 }
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.go',
+  callback = function()
+    vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+  end
+})
 
 require("james")
