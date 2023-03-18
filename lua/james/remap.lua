@@ -9,7 +9,7 @@ end
 vim.g.mapleader = " "
 
 map("n", "<leader>ex", vim.cmd.Ex)
-map("i", "jk", "<Esc>", {noremap = true})
+map("i", "jk", "<Esc>", { noremap = true })
 
 -- Split navigation
 map("n", "<C-h>", "<C-w>h")
