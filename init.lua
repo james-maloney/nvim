@@ -12,6 +12,9 @@ vim.opt.cindent = false;
 vim.opt.nu = true;
 vim.opt.relativenumber = true
 vim.cmd("set nowrap")
+vim.cmd("set ignorecase")
+vim.cmd("set smartcase")
+
 
 vim.cmd("set formatoptions+=r")
 vim.opt.comments = {

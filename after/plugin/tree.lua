@@ -18,3 +18,5 @@ vim.opt.termguicolors = true
 -- vim.keymap.set("", "<Leader>w", ":NvimTreeToggle <CR> <bar> <C-W>=")
 
 vim.keymap.set("", "<Leader>w", ":Neotree toggle <CR> <bar> <C-W>=")
+
+vim.cmd("Neotree toggle")

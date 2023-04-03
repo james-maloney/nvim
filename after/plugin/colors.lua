@@ -1,5 +1,5 @@
 --require('rose-pine').setup({
- --   disable_background = true
+--   disable_background = true
 --})
 
 require('nordic').colorscheme({
@@ -10,13 +10,17 @@ require('nordic').colorscheme({
     alternate_backgrounds = true
 })
 
-function ColorMyPencils(color) 
-	color = color or "nordic" --"rose-pine"
-	vim.cmd.colorscheme(color)
+function ColorMyPencils(color)
+    color = color or "nordic" --"rose-pine"
+    vim.cmd.colorscheme(color)
 
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
+    vim.cmd("highlight GitSignsAdd guibg=NONE")
+    vim.cmd("highlight GitSignsChange guibg=NONE")
+    vim.cmd("highlight GitSignsDelete guibg=NONE")
+    vim.cmd("highlight SignColumn guibg=NONE")
 end
 
 vim.cmd('colorscheme nordic')
