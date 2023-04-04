@@ -10,6 +10,11 @@ return require('packer').startup(function(use)
 	}
 
 	use {
+		"nvim-telescope/telescope-file-browser.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+	}
+
+	use {
 		"windwp/nvim-autopairs",
 		config = function() require("nvim-autopairs").setup {} end
 	}
@@ -115,6 +120,14 @@ return require('packer').startup(function(use)
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 		}
+	}
+
+	use {
+		's1n7ax/nvim-window-picker',
+		tag = 'v1.*',
+		config = function()
+			require 'window-picker'.setup()
+		end,
 	}
 
 
