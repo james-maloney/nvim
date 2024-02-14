@@ -14,7 +14,7 @@ vim.opt.relativenumber = true
 vim.cmd("set nowrap")
 vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
-
+vim.cmd("set signcolumn=yes")
 
 vim.cmd("set formatoptions+=r")
 vim.opt.comments = {

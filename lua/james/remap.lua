@@ -16,10 +16,12 @@ map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
+
 -- Full screen
 map("n", "ff", "<C-w><Bar>")
 
-map("n", "<leader>l", ":set list!<CR>")
+map("n", "<leader>i", ":set list!<CR>")
+map("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>")
 vim.opt.listchars = {
 	tab = '│ ',
 	extends = '⟩',

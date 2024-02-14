@@ -24,5 +24,6 @@ function ColorMyPencils(color)
 end
 
 vim.cmd('colorscheme nordic')
+--vim.cmd('colorscheme catppuccin-latte')
 
 ColorMyPencils()
