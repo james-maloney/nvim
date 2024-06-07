@@ -29,6 +29,9 @@ map("n", "gv", "<cmd> :vsplit | lua vim.lsp.buf.definition() <CR>", { desc = "LS
 -- NEOGIT
 map("n", "<leader>m", "<cmd> Neogit <CR>", { desc = "NEOGIT Toggle"})
 
+-- NVIMTREE
+map("n", "<leader>e", "<cmd> NvimTreeToggle <CR>", { desc = "NVIMTREE Toggle"})
+
 -- COPILOT
 vim.g.copilot_assume_mapped = true
 map("i", "kk", 'copilot#Accept("<CR>")', { desc = "COPILOT Accept suggestion", silent = true, expr = true, replace_keycodes = false })

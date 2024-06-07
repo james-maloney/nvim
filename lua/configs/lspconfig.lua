@@ -29,9 +29,6 @@ lspconfig.gopls.setup {
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
-      inlay_hint = {
-        enable = true,
-      },
       completeUnimported = true,
       usePlaceholders = true,
       analyses = {
