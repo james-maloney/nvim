@@ -1,39 +1,67 @@
-vim.opt.swapfile = false
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+vim.g.mapleader = " "
 
--- Also set in after/plugin/indent
-vim.opt.tabstop = 4;
-vim.opt.shiftwidth = 4;
-vim.opt.softtabstop = 4;
-vim.opt.expandtab = false;
-vim.opt.autoindent = false;
-vim.opt.smartindent = false;
-vim.opt.indentexpr = "";
-vim.opt.cindent = false;
-vim.opt.nu = true;
-vim.opt.relativenumber = true
-vim.cmd("set nowrap")
-vim.cmd("set ignorecase")
-vim.cmd("set smartcase")
-vim.cmd("set signcolumn=yes")
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-vim.cmd("set formatoptions+=r")
-vim.opt.comments = {
-	sl = "/**",
-	mb = " *",
-	elx = " */"
-}
+if not vim.loop.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+end
 
--- vim.api.nvim_create_autocmd('BufWritePre', {
--- 	callback = function()
--- 		vim.lsp.buf.format()
--- 	end
--- })
+vim.opt.rtp:prepend(lazypath)
 
--- vim.api.nvim_create_autocmd('BufWritePre', {
--- 	pattern = '*.go',
--- 	callback = function()
--- 		vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
--- 	end
--- })
+local lazy_config = require "configs.lazy"
 
-require("james")
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+    config = function()
+      require "options"
+    end,
+  },
+
+  { import = "plugins" },
+}, lazy_config)
+
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
+
+require "nvchad.autocmds"
+
+vim.schedule(function()
+  require "mappings"
+end)
+
+
+vim.opt.undofile = false
+vim.wo.relativenumber = true
+vim.wo.wrap = false
+
+vim.filetype.add({ extension = { templ = "templ" } })
+
+local custom_format = function()
+    if vim.bo.filetype == "templ" then
+        local bufnr = vim.api.nvim_get_current_buf()
+        local filename = vim.api.nvim_buf_get_name(bufnr)
+        local cmd = "templ fmt " .. vim.fn.shellescape(filename)
+
+        vim.fn.jobstart(cmd, {
+            on_exit = function()
+                -- Reload the buffer only if it's still the current buffer
+                if vim.api.nvim_get_current_buf() == bufnr then
+                    vim.cmd('e!')
+                end
+            end,
+        })
+    else
+        vim.lsp.buf.format()
+    end
+end
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = custom_format })
