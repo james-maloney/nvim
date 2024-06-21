@@ -8,6 +8,7 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.autoindent = false
 opt.undofile = false
+opt.swapfile = false
 
 vim.wo.relativenumber = true
 vim.wo.wrap = false

@@ -11,7 +11,7 @@ local nvim_tmux_nav = require('nvim-tmux-navigation')
 
 -- tmux naviagation
 map("n", "<C-h>", function()
-    nvim_tmux_nav.NvimTmuxNavigateLeft()
+   nvim_tmux_nav.NvimTmuxNavigateLeft()
 end, { desc = "TMUX Window left"})
 map("n", "<C-l>", function()
     nvim_tmux_nav.NvimTmuxNavigateRight()
@@ -28,6 +28,9 @@ map("n", "gv", "<cmd> :vsplit | lua vim.lsp.buf.definition() <CR>", { desc = "LS
 
 -- NEOGIT
 map("n", "<leader>m", "<cmd> Neogit <CR>", { desc = "NEOGIT Toggle"})
+
+-- NOICE
+map("n", "nd", "<cmd> NoiceDismiss <CR>", { desc = "NOICE Dismiss"})
 
 -- NVIMTREE
 map("n", "<leader>e", "<cmd> NvimTreeToggle <CR>", { desc = "NVIMTREE Toggle"})
@@ -67,8 +70,10 @@ map("n", "<leader>z", function()
     harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = "HARPOON Menu"})
 
+-- Trouble
+map("n", "<leader>xx", "<cmd> Trouble diagnostics toggle <CR>", { desc = "TROUBLE Toggle", silent = true, noremap = true })
+
 -- Golang
 map("n", "<leader>gsj", "<cmd> GoAddTag json <CR>", { desc = "GO Add JSON struct tags"})
 map("n", "<leader>gsy", "<cmd> GoAddTag yaml <CR>", { desc = "GO Add YAML struct tags"})
 map("n", "<leader>gf", "<cmd> GoFillStruct <CR>", { desc = "GO Fill Go struct"})
-
