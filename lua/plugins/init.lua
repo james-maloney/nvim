@@ -112,7 +112,7 @@ return {
           enabled = false,
         },
         popupmenu = {
-          enabled = false,
+          enabled = true,
         },
       })
       require("telescope").load_extension("noice")
@@ -154,15 +154,24 @@ return {
         desc = "TROUBLE Quickfix List (Trouble)",
       },
     },
-  }, {
-  "folke/zen-mode.nvim",
-  config = function()
-    require("zen-mode").setup {}
-  end
-},
+  },
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {}
+    end
+  },
   {
     "github/copilot.vim",
     lazy = false,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+    },
   },
   {
     "iamcco/markdown-preview.nvim",
@@ -320,6 +329,8 @@ return {
     opts = {
       ensure_installed = {
         "gopls",
+        "jsonls",
+        "cuepls",
       },
     },
   },

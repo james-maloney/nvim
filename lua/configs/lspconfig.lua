@@ -37,13 +37,26 @@ lspconfig.gopls.setup {
   },
 }
 
-local servers = { 'ccls', 'cmake', 'tsserver', 'templ' }
+local servers = { 'ccls', 'cmake', 'tsserver', 'templ', 'jsonls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({
     on_attach = on_attach,
     capabilities = capabilities,
   })
 end
+
+local configs = require 'lspconfig.configs'
+
+configs.cuepls = {
+  default_config = {
+    cmd = {"cuepls"},
+    filetypes = {"cue"},
+    root_dir = lspconfig.util.root_pattern(".git", "cue.mod"),
+    settings = {},
+  },
+}
+
+lspconfig.cuepls.setup {}
 
 lspconfig.htmx.setup({
   on_attach = on_attach,
