@@ -37,7 +37,7 @@ lspconfig.gopls.setup {
   },
 }
 
-local servers = { 'ccls', 'cmake', 'tsserver', 'templ', 'jsonls' }
+local servers = { 'ccls', 'cmake', 'ts_ls', 'templ', 'jsonls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({
     on_attach = on_attach,

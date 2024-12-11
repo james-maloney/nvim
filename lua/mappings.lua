@@ -30,7 +30,7 @@ map("n", "gv", "<cmd> :vsplit | lua vim.lsp.buf.definition() <CR>", { desc = "LS
 map("n", "<leader>m", "<cmd> Neogit <CR>", { desc = "NEOGIT Toggle"})
 
 -- NOICE
-map("n", "nd", "<cmd> NoiceDismiss <CR>", { desc = "NOICE Dismiss"})
+--map("n", "nd", "<cmd> NoiceDismiss <CR>", { desc = "NOICE Dismiss"})
 
 -- NVIMTREE
 map("n", "<leader>e", "<cmd> NvimTreeToggle <CR>", { desc = "NVIMTREE Toggle"})
